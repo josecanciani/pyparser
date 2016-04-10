@@ -5,7 +5,7 @@ keywords = ['static', 'protected', 'public', 'private', 'abstract', 'function']
 
 class Method(BaseMethod):
     def getName(self):
-        line = self.getCode().splitlines()[0]
+        line = self.getFirstLine()
         find = False
         for word in line.lstrip().split(' '):
             if find:

@@ -1,9 +1,7 @@
 
-class Method(object):
-    def __init__(self, code):
-        self.code = code
-    def getCode(self):
-        return self.code
+from grammar.Code import Code
+
+class Method(Code):
     def getName(self):
         raise NotImplementedError
     def isPrivate(self):

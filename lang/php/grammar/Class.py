@@ -3,7 +3,7 @@ from grammar.Class import Class as BaseClass, Extractor as BaseExtractor
 
 class Class(BaseClass):
     def getName(self):
-        line = self.getCode().splitlines()[0]
+        line = self.getFirstLine()
         for word in line.lstrip().split(' '):
             if word.strip() and word.strip() != 'class':
                 return word.strip()

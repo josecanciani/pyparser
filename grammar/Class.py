@@ -1,9 +1,7 @@
 
-class Class(object):
-    def __init__(self, code):
-        self.code = code
-    def getCode(self):
-        return self.code
+from grammar.Code import Code
+
+class Class(Code):
     def getName(self):
         raise NotImplementedError
 
