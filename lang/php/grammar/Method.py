@@ -14,15 +14,17 @@ class Method(BaseMethod):
                 find = True
         raise InvalidSyntax('Could not find class name in line: ' + line)
     def isPrivate(self):
-        raise NotImplementedError
+        return 'private' in self._getKeywords()
     def isPublic(self):
-        raise NotImplementedError
+        return 'public' in self._getKeywords() or (not self.isPrivate() and not self.isProtected())
     def isProtected(self):
-        raise NotImplementedError
+        return 'protected' in self._getKeywords()
     def isStatic(self):
-        raise NotImplementedError
+        return 'static' in self._getKeywords()
     def isAbstract(self):
-        raise NotImplementedError
+        return 'abstract' in self._getKeywords()
+    def _getKeywords(self):
+        return [word.strip() for word in self.getFirstLine().split('function')[0].split(' ')]
 
 class Extractor(BaseExtractor):
     def getMethods(self, classObject):
