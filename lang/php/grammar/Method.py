@@ -30,7 +30,7 @@ class Extractor(BaseExtractor):
         methods = []
         findClosure = None
         methodCode = ''
-        for line in code.splitlines():
+        for line in code.splitlines(True):
             if findClosure == None:
                 for keyword in keywords:
                     if line.lstrip().startswith(keyword):

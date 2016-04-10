@@ -14,7 +14,7 @@ class Extractor(BaseExtractor):
         findClosure = None
         classCode = ''
         classes = []
-        for line in code.splitlines():
+        for line in code.splitlines(True):
             if findClosure == None:
                 if line.lstrip()[0:6] == 'class ':
                     findClosure = line.find('class')
