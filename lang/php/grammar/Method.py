@@ -24,7 +24,7 @@ class Method(BaseMethod):
     def isAbstract(self):
         return 'abstract' in self._getKeywords()
     def _getKeywords(self):
-        return [word.strip() for word in self.getFirstLine().split('function')[0].split(' ')]
+        return [word.strip() for word in self.getFirstLine().strip().split('function')[0].split(' ') if word.strip()]
 
 class Extractor(BaseExtractor):
     def getMethods(self, classObject):
