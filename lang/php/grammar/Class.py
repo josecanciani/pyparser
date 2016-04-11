@@ -11,6 +11,8 @@ class Class(BaseClass):
         raise InvalidSyntax('Could not find class name in line: ' + line)
 
 class Extractor(BaseExtractor):
+    def createClass(self, code):
+        return Class(code)
     def getClasses(self, code):
         findClosure = None
         classCode = ''
@@ -23,6 +25,6 @@ class Extractor(BaseExtractor):
             else:
                 classCode = classCode + line
                 if line.lstrip()[0] == '}' and line.find('}') == findClosure:
-                    classes.append(Class(classCode))
+                    classes.append(self.createClass(classCode))
                     findClosure = None
         return classes
