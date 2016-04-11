@@ -1,5 +1,6 @@
 
 from grammar.Method import Method as BaseMethod, Extractor as BaseExtractor
+from grammar.Exception import InvalidSyntax
 
 keywords = ['static', 'protected', 'public', 'private', 'abstract', 'function']
 
@@ -44,9 +45,3 @@ class Extractor(BaseExtractor):
                     methods.append(Method(methodCode))
                     findClosure = None
         return methods
-
-class InvalidSyntax(Exception):
-    def __init__(self, msg):
-        self.msg = msg
-    def __str__(self):
-        return repr(self.msg)

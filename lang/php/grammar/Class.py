@@ -1,5 +1,6 @@
 
 from grammar.Class import Class as BaseClass, Extractor as BaseExtractor
+from grammar.Exception import InvalidSyntax
 
 class Class(BaseClass):
     def getName(self):
@@ -25,9 +26,3 @@ class Extractor(BaseExtractor):
                     classes.append(Class(classCode))
                     findClosure = None
         return classes
-
-class InvalidSyntax(Exception):
-    def __init__(self, msg):
-        self.msg = msg
-    def __str__(self):
-        return repr(self.msg)
