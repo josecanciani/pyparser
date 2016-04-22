@@ -14,7 +14,11 @@ class Method(Code):
         raise NotImplementedError
     def isAbstract(self):
         raise NotImplementedError
+    def getClass(self):
+        return self.parent
 
 class Extractor(object):
+    def __init__(self, parent = None):
+        self.parent = parent
     def getMethods(self, code):
         raise NotImplementedError

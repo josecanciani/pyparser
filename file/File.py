@@ -25,7 +25,7 @@ class File(object):
         package = 'lang.' + self.getLang() + '.grammar.Class'
         className = 'Extractor'
         Extractor = getattr(__import__(package, fromlist=[className]), className)
-        extractor = Extractor()
+        extractor = Extractor(self)
         return extractor.getClasses(self.code)
     def getClass(self, className):
         for parsedClass in self.getClasses():

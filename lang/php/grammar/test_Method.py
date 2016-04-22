@@ -50,8 +50,8 @@ class TestClass(unittest.TestCase):
         classExtractor = ClassExtractor()
         classes = classExtractor.getClasses(code)
         self.assertTrue(len(classes) > 0, 'Cannot find classes in code: \n' + code)
-        methodExtractor = MethodExtractor()
-        methods = methodExtractor.getMethods(classes[0])
+        methodExtractor = MethodExtractor(classes[0])
+        methods = methodExtractor.getMethods()
         self.assertTrue(len(methods) > 0, 'Cannot find methods in class code: \n' + code)
         return methods[0]
 

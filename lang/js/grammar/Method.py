@@ -20,8 +20,8 @@ class Method(BaseMethod):
         return [word.strip() for word in self.getFirstLine().strip().split('(')[0].split(' ') if word.strip()][:-1]
 
 class Extractor(BaseExtractor):
-    def getMethods(self, classObject):
-        code = classObject.getCode()
+    def getMethods(self):
+        code = self.parent.getCode()
         methods = []
         findClosure = None
         methodCode = ''
@@ -35,6 +35,6 @@ class Extractor(BaseExtractor):
             else:
                 methodCode = methodCode + line
                 if line.lstrip()[0] == '}' and line.find('}') == findClosure:
-                    methods.append(Method(methodCode))
+                    methods.append(Method(methodCode, self.parent))
                     findClosure = None
         return methods

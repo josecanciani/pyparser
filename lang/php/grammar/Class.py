@@ -20,12 +20,12 @@ class Class(BaseClass):
                 next = True
         return None
     def getMethods(self):
-        extractor = MethodExtractor()
-        return extractor.getMethods(self)
+        extractor = MethodExtractor(self)
+        return extractor.getMethods()
 
 class Extractor(BaseExtractor):
     def createClass(self, code):
-        return Class(code)
+        return Class(code, self.parent)
     def getClasses(self, code):
         findClosure = None
         classCode = ''

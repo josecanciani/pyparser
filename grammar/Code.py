@@ -1,7 +1,8 @@
 
 class Code(object):
-    def __init__(self, code):
+    def __init__(self, code, parent = None):
         self.code = code
+        self.parent = parent
     def getCode(self):
         return self.code
     def getFirstLine(self):

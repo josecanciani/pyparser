@@ -8,8 +8,12 @@ class Class(Code):
         raise NotImplementedError
     def getMethods(self):
         raise NotImplementedError
+    def getFile(self):
+        return self.parent
 
 class Extractor(object):
+    def __init__(self, parent = None):
+        self.parent = parent
     def createClass(self, code):
         raise NotImplementedError
     def getClasses(self, code):
