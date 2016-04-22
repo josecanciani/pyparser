@@ -26,13 +26,21 @@ class TestClassInspectorConstructor(unittest.TestCase):
         # PHP
         inspector = ClassInspector(self._getPhpConfig(), 'SimpleClass', None)
         methods = inspector.getInstanceMethods()
-        self.assertNotEqual(0, len(methods))
+        for method in methods:
+            if method.getClass().getName() != 'SimpleClass':
+                self.assertFalse(method.isPrivate())
+        self.assertEqual(2, len(methods))
         self.assertEqual('myFirstMethod', methods[0].getName())
+        self.assertEqual('myProtectedMethod', methods[1].getName())
         # JS
         inspector = ClassInspector(self._getJsConfig(), 'SimpleClass', None)
         methods = inspector.getInstanceMethods()
-        self.assertNotEqual(0, len(methods))
+        for method in methods:
+            if method.getClass().getName() != 'SimpleClass':
+                self.assertFalse(method.isPrivate())
+        self.assertEqual(2, len(methods))
         self.assertEqual('myFirstMethod', methods[0].getName())
+        self.assertEqual('myProtectedMethod', methods[1].getName())
 
 
 if __name__ == '__main__':
