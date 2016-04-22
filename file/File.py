@@ -31,7 +31,7 @@ class File(object):
         for parsedClass in self.getClasses():
             if parsedClass.getName() == className:
                 return parsedClass
-        return None
+        raise ClassDoesNotExists(className)
 
 class FileDoesNotExists(IOError):
     def __init__(self, path):
@@ -44,3 +44,9 @@ class LanguageNotSupported(Exception):
         self.lang = lang
     def __str__(self):
         return repr(self.lang)
+
+class ClassDoesNotExists(Exception):
+    def __init__(self, className):
+        self.className = className
+    def __str__(self):
+        return repr(self.className)
