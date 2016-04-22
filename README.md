@@ -42,6 +42,29 @@ Instead we just parse the file using rudimentary string processing and some rege
     ) {
     ```
 
+
+# Language support
+
+For now we support EMCA JS (.js files) and PHP (.php).
+
+PHP namespaces are not supported at this time
+
+
+# Class to file
+
+Since the main objetive is speed and live parsing, we don't create indexes. So we need to be able to translate class names to files, in order to be able to navigate code.
+
+This translation depends on how your code is organized, so you need to provide a callback that will be in charge of the translation.
+
+    ```python
+    def classToFile(className, namespace):
+        'your code here'
+        return filePath
+    ```
+
+Note that namespaces are not supported, but may in the future. you need to return an absolute path of the file containing that class.
+
+
 # Unit testing
 
 Run this on the project folder:
