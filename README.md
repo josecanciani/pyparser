@@ -9,18 +9,18 @@ The first implementation will be used to navigate code in Sublime Text.
 # About code parsing
 
 Since we want this code to be fast and work with "broken" -when editing a file that may not even be saved to disk-, we don't use any complex lexical parser.
-Instead we just parse the file and we expect the code to be somewhat cleaned:
+Instead we just parse the file using rudimentary string processing and some regexps, so we expect the code to be somewhat cleaned:
 
 * indentation is key to identify when a class or method ends
 
-    OK:
+    Good:
     ```php
     function myFunc() {
         ...
     }
     ```
 
-    NOK:
+    Bad:
     ```php
     function myFunc() {
         ...
@@ -29,12 +29,12 @@ Instead we just parse the file and we expect the code to be somewhat cleaned:
 
 * method definition cannot span to multiple rows:
 
-    OK:
+    Good:
     ```php
     function myFunc($myPar1, $myPar2) {
     ```
 
-    NOK:
+    Bad:
     ```php
     function myFunc(
         $myPar1,
