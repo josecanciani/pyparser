@@ -3,13 +3,24 @@ from grammar.Class import Class as BaseClass, Extractor as BaseExtractor
 from grammar.Exception import InvalidSyntax
 from lang.php.grammar.Method import Extractor as MethodExtractor
 
+keywords = ['abstract', 'class']
+
 class Class(BaseClass):
     def getName(self):
         line = self.getFirstLine()
+        find = False
         for word in line.lstrip().split(' '):
-            if word.strip() and word.strip() != 'class':
-                return word.strip()
+            if find:
+               return word.strip().split('(')[0]
+            if word.strip() and word.strip() == 'class':
+                find = True
         raise InvalidSyntax('Could not find class name in line: ' + line)
+    def isAbstract(self):
+        line = self.getFirstLine()
+        for word in line.lstrip().split(' '):
+            if word.strip() and word.strip() == 'abstract':
+                return True
+        return False
     def getExtendsFromName(self):
         line = self.getFirstLine()
         next = False
@@ -32,12 +43,14 @@ class Extractor(BaseExtractor):
         classes = []
         for line in code.splitlines(True):
             if findClosure == None:
-                if line.lstrip()[0:6] == 'class ':
-                    findClosure = line.find('class')
-                    classCode = line
+                for keyword in keywords:
+                    if line.lstrip().startswith(keyword):
+                        findClosure = line.find(keyword)
+                        classCode = line
             else:
                 classCode = classCode + line
-                if line.lstrip()[0] == '}' and line.find('}') == findClosure:
+                strippedLine = line.lstrip()
+                if len(strippedLine) and strippedLine[0] == '}' and line.find('}') == findClosure:
                     classes.append(self.createClass(classCode))
                     findClosure = None
         return classes

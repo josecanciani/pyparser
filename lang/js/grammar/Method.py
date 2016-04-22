@@ -15,7 +15,7 @@ class Method(BaseMethod):
     def isStatic(self):
         return 'static' in self._getKeywords()
     def isAbstract(self):
-        raise NotImplementedError
+        return False
     def _getKeywords(self):
         return [word.strip() for word in self.getFirstLine().strip().split('(')[0].split(' ') if word.strip()][:-1]
 

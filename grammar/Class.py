@@ -6,6 +6,8 @@ class Class(Code):
         raise NotImplementedError
     def getExtendsFromName(self):
         raise NotImplementedError
+    def isAbstract(self):
+        raise NotImplementedError
     def getMethods(self):
         raise NotImplementedError
     def getFile(self):

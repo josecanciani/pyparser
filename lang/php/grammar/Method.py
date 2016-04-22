@@ -36,11 +36,16 @@ class Extractor(BaseExtractor):
             if findClosure == None:
                 for keyword in keywords:
                     if line.lstrip().startswith(keyword):
-                        findClosure = line.find(keyword)
-                        methodCode = line
+                        if line.find('abstract ') >= 0:
+                            methods.append(Method(line, self.parent))
+                        else:
+                            findClosure = line.find(keyword)
+                            methodCode = line
+
             else:
                 methodCode = methodCode + line
-                if line.lstrip()[0] == '}' and line.find('}') == findClosure:
+                strippedLine = line.lstrip()
+                if len(strippedLine) and strippedLine[0] == '}' and line.find('}') == findClosure:
                     methods.append(Method(methodCode, self.parent))
                     findClosure = None
         return methods

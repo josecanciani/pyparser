@@ -6,6 +6,8 @@ class Class(PHPClass):
     def getMethods(self):
         extractor = MethodExtractor(self)
         return extractor.getMethods()
+    def isAbstract(self):
+        return False
 
 class Extractor(PHPExtractor):
     def createClass(self, code):
