@@ -29,11 +29,10 @@ class Method(BaseMethod):
 
 class Extractor(BaseExtractor):
     def getMethods(self):
-        code = self.parent.getCode()
         methods = []
         findClosure = None
         methodCode = ''
-        for line in code.splitlines(True):
+        for line in self.parent.getCode().splitlines(True)[1:]:
             if findClosure == None:
                 for keyword in keywords:
                     if line.lstrip().startswith(keyword):
