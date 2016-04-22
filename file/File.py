@@ -27,6 +27,11 @@ class File(object):
         Extractor = getattr(__import__(package, fromlist=[className]), className)
         extractor = Extractor()
         return extractor.getClasses(self.code)
+    def getClass(self, className):
+        for parsedClass in self.getClasses():
+            if parsedClass.getName() == className:
+                return parsedClass
+        return None
 
 class FileDoesNotExists(IOError):
     def __init__(self, path):
