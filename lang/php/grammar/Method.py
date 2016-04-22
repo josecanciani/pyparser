@@ -13,7 +13,7 @@ class Method(BaseMethod):
                return word.strip().split('(')[0]
             if word.strip() and word.strip() == 'function':
                 find = True
-        raise InvalidSyntax('Could not find class name in line: ' + line)
+        raise InvalidSyntax('Could not find method name in line: ' + line)
     def isPrivate(self):
         return 'private' in self._getKeywords()
     def isPublic(self):
