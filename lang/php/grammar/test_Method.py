@@ -13,6 +13,7 @@ class TestClass(unittest.TestCase):
         myFunc = self._getMethodFromClassCode(classCode)
         self.assertEqual('myFunc', myFunc.getName())
         self.assertEqual(methodCode, myFunc.getCode())
+        self.assertEqual('HelloWorld', myFunc.getClass().getName())
 
     def test_keywords(self):
         classCode = '\nclass HelloWorld {\n    function myFunc() {\n        echo "hola mundo";\n    }\n}\n'
