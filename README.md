@@ -14,25 +14,33 @@ Instead we just parse the file and we expect the code to be somewhat cleaned:
 * indentation is key to identify when a class or method ends
 
     OK:
+    ```PHP
     function myFunc() {
         ...
     }
+    ```
 
     NOK:
+    ```
     function myFunc() {
         ...
         }
+    ```
 
 * method definition cannot span to multiple rows:
 
     OK:
+    ```
     function myFunc($myPar1, $myPar2) {
+    ```
 
     NOK:
+    ```
     function myFunc(
         $myPar1,
         $myPar2
     ) {
+    ```
 
 # Unit testing
 
