@@ -9,7 +9,15 @@ class Class(Code):
     def isAbstract(self):
         raise NotImplementedError
     def getMethods(self):
+        """Return all methods in class"""
         raise NotImplementedError
+    def getInstanceMethods(self):
+        """Return only public and protected methods in class"""
+        methods = []
+        for method in self.getMethods():
+            if not method.isPrivate() and not method.isAbstract():
+                methods.append(method)
+        return methods
     def getFile(self):
         return self.parent
 
