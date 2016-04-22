@@ -10,6 +10,15 @@ class Class(BaseClass):
             if word.strip() and word.strip() != 'class':
                 return word.strip()
         raise InvalidSyntax('Could not find class name in line: ' + line)
+    def getExtendsFromName(self):
+        line = self.getFirstLine()
+        next = False
+        for word in line.lstrip().split(' '):
+            if next:
+                return word.strip()
+            if word == 'extends':
+                next = True
+        return None
     def getMethods(self):
         extractor = MethodExtractor()
         return extractor.getMethods(self)
