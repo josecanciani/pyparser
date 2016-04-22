@@ -1,7 +1,6 @@
-<?
 
 class SimpleClass {
-    function myFirstMethod() {
+    myFirstMethod() {
         return null;
     }
 }
