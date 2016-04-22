@@ -1,6 +1,5 @@
 
 import os
-from importlib import import_module
 
 def fromFile(filePath):
     filename, extension = os.path.splitext(filePath)
@@ -23,8 +22,10 @@ class File(object):
     def getLang(self):
         return self.lang
     def getClasses(self):
-        module = import_module('lang.' + self.lang + '.grammar.Class')
-        extractor = module.Extractor()
+        package = 'lang.' + self.getLang() + '.grammar.Class'
+        className = 'Extractor'
+        Extractor = getattr(__import__(package, fromlist=[className]), className)
+        extractor = Extractor()
         return extractor.getClasses(self.code)
 
 class FileDoesNotExists(IOError):
