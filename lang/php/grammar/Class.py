@@ -1,6 +1,7 @@
 
 from grammar.Class import Class as BaseClass, Extractor as BaseExtractor
 from grammar.Exception import InvalidSyntax
+from lang.php.grammar.Method import Extractor as MethodExtractor
 
 class Class(BaseClass):
     def getName(self):
@@ -9,6 +10,9 @@ class Class(BaseClass):
             if word.strip() and word.strip() != 'class':
                 return word.strip()
         raise InvalidSyntax('Could not find class name in line: ' + line)
+    def getMethods(self):
+        extractor = MethodExtractor()
+        return extractor.getMethods(self)
 
 class Extractor(BaseExtractor):
     def createClass(self, code):
