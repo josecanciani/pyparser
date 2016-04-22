@@ -35,6 +35,8 @@ class TestFileConstructor(unittest.TestCase):
         file = fromCode(code, 'php')
         classes = file.getClasses()
         self.assertEqual('Class', classes[0].__class__.__name__)
+        self.assertEqual('HelloWorld', classes[0].getName())
+        self.assertEqual(code, classes[0].getFile().getCode())
 
 
 if __name__ == '__main__':
