@@ -14,6 +14,8 @@ class TestClass(unittest.TestCase):
         self.assertEqual(classCode, myClass.getCode())
         self.assertEqual('MyClass', myClass.getName())
         self.assertEqual('MyParentClass', myClass.getExtendsFromName())
+        self.assertEqual(1, myClass.getStartLineNumber())
+        self.assertEqual(2, myClass.getLastLineNumber())
 
     def test_extractAbstract(self):
         code = '<? \n abstract class MyClass extends MyParentClass {\n }\n'

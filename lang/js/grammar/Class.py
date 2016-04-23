@@ -10,5 +10,5 @@ class Class(PHPClass):
         return False
 
 class Extractor(PHPExtractor):
-    def createClass(self, code):
-        return Class(code, self.parent)
+    def createClass(self, code, startLineNumber):
+        return Class(code, self.parent, startLineNumber)

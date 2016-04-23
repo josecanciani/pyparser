@@ -35,22 +35,25 @@ class Class(BaseClass):
         return extractor.getMethods()
 
 class Extractor(BaseExtractor):
-    def createClass(self, code):
-        return Class(code, self.parent)
+    def createClass(self, code, startLineNumber):
+        return Class(code, self.parent, startLineNumber)
     def getClasses(self, code):
         findClosure = None
         classCode = ''
         classes = []
+        lineNumber = -1
         for line in code.splitlines(True):
+            lineNumber += 1
             if findClosure == None:
                 for keyword in keywords:
                     if line.lstrip().startswith(keyword):
                         findClosure = line.find(keyword)
                         classCode = line
+                        startLineNumber = lineNumber
             else:
                 classCode = classCode + line
                 strippedLine = line.lstrip()
                 if len(strippedLine) and strippedLine[0] == '}' and line.find('}') == findClosure:
-                    classes.append(self.createClass(classCode))
+                    classes.append(self.createClass(classCode, startLineNumber))
                     findClosure = None
         return classes

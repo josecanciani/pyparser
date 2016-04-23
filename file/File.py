@@ -8,13 +8,14 @@ def fromFile(filePath):
     except IOError:
         raise FileDoesNotExists(filePath)
 
-def fromCode(text, lang):
-    return File(text, lang)
+def fromCode(text, lang, currentLine):
+    return File(text, lang, currentLine)
 
 class File(object):
-    def __init__(self, code, lang):
+    def __init__(self, code, lang, currentLine = 0):
         self.code = code
         self.lang = lang
+        self.currentLine = currentLine
         if self.lang not in ('php', 'js'):
             raise LanguageNotSupported(self.lang)
     def getCode(self):
@@ -32,6 +33,11 @@ class File(object):
             if parsedClass.getName() == className:
                 return parsedClass
         raise ClassDoesNotExists(className)
+    def getCurrentClass(self):
+        for parsedClass in self.getClasses():
+            if self.currentLine >= parsedClass.getStartLineNumber() and self.currentLine <= parsedClass.getLastLineNumber():
+                return parsedClass
+        raise NoClassInCurrentLine(self.currentLine)
 
 class FileDoesNotExists(IOError):
     def __init__(self, path):
@@ -50,3 +56,9 @@ class ClassDoesNotExists(Exception):
         self.className = className
     def __str__(self):
         return repr(self.className)
+
+class NoClassInCurrentLine(Exception):
+    def __init__(self, lineNumber):
+        self.lineNumber = lineNumber
+    def __str__(self):
+        return repr(self.lineNumber)

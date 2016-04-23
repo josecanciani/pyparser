@@ -24,7 +24,7 @@ class Class(Code):
 class Extractor(object):
     def __init__(self, parent = None):
         self.parent = parent
-    def createClass(self, code):
+    def createClass(self, code, startLineNumber):
         raise NotImplementedError
     def getClasses(self, code):
         raise NotImplementedError
