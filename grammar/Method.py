@@ -20,5 +20,7 @@ class Method(Code):
 class Extractor(object):
     def __init__(self, parent = None):
         self.parent = parent
+    def createMethod(self, code, startLineNumber):
+        raise NotImplementedError
     def getMethods(self, code):
         raise NotImplementedError

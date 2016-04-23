@@ -28,24 +28,29 @@ class Method(BaseMethod):
         return [word.strip() for word in self.getFirstLine().strip().split('function')[0].split(' ') if word.strip()]
 
 class Extractor(BaseExtractor):
+    def createMethod(self, code, startLineNumber):
+        return Method(code, self.parent, startLineNumber)
     def getMethods(self):
         methods = []
         findClosure = None
         methodCode = ''
+        lineNumber = 0
         for line in self.parent.getCode().splitlines(True)[1:]:
+            lineNumber += 1
             if findClosure == None:
                 for keyword in keywords:
                     if line.lstrip().startswith(keyword):
                         if line.find('abstract ') >= 0:
-                            methods.append(Method(line, self.parent))
+                            methods.append(self.createMethod(line, lineNumber))
                         else:
                             findClosure = line.find(keyword)
                             methodCode = line
+                            startLineNumber = lineNumber
 
             else:
                 methodCode = methodCode + line
                 strippedLine = line.lstrip()
                 if len(strippedLine) and strippedLine[0] == '}' and line.find('}') == findClosure:
-                    methods.append(Method(methodCode, self.parent))
+                    methods.append(self.createMethod(methodCode, startLineNumber))
                     findClosure = None
         return methods
