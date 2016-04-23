@@ -4,6 +4,8 @@ import os
 import pprint
 from lang.js.grammar.Class import Class, Extractor as ClassExtractor
 from lang.js.grammar.Method import Extractor as MethodExtractor
+from file.File import fromCode
+from grammar.Class import NoMethodInCurrentLine
 
 class TestClass(unittest.TestCase):
 
@@ -43,6 +45,21 @@ class TestClass(unittest.TestCase):
                     steps['step2'] = True
                     self.assertFalse(myFunc.isStatic())
             self.assertEqual(2, len(steps.keys()), 'Not all combinations of method keywords had been tested')
+
+    def test_getLineNumbers(self):
+        code = '\nclass MyClass {\n\n   myFunc() {\n        var pp = "hola mundo";\n   }\n}\n'
+        file = fromCode(code, 'js', 4)
+        myClass = file.getCurrentClass()
+        self.assertEqual('MyClass', myClass.getName())
+        self.assertEqual(3, myClass.getCurrentLineNumber())
+        myFunc = myClass.getCurrentMethod()
+        self.assertEqual('myFunc', myFunc.getName())
+        self.assertEqual(1, myFunc.getCurrentLineNumber())
+        try:
+            fromCode(code, 'js', 1).getCurrentClass().getCurrentMethod()
+            self.assertTrue(false, 'Expecting NoMethodInCurrentLine exception, should not be here')
+        except NoMethodInCurrentLine as e:
+            self.assertEqual('0', str(e))
 
     def _getMethodFromClassCode(self, code):
         classExtractor = ClassExtractor()
