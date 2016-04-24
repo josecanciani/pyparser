@@ -26,7 +26,7 @@ thisMethods = inspector.getInstanceMethods()
 
 """ This returns a raw class object """
 myClass = inspector.getClass()
-    ```
+```
 
 # About code parsing
 
