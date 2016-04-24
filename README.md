@@ -6,6 +6,28 @@ The objective of this project is to provide a quick and live (no indexed code) p
 
 The first implementation will be used to navigate code in Sublime Text.
 
+# Usage
+
+Since there's no index to match files to classes, a Config object is needed, so you can define how to convert a class name to a file path.
+
+    ```python
+    from pyparser.Config import Config
+    from pyparser.navigator.ClassInspector import *
+
+    def _phpClassToFile(self, className, namespace):
+        """ Converts any class name into a file path where to find it"""
+        return os.path.dirname(os.path.realpath(__file__)) + '/../classes/' + className.replace('_', '/') + '.php'
+
+    config = Config(_phpClassToFile)
+    inspector = ClassInspector(config, 'MyClassNameToInsect', None)
+
+    """ This will give you all methods you can access from MyClassNameToInsect (anything you can use from "$this->")"""
+    thisMethods = inspector.getInstanceMethods()
+
+    """ This returns a raw class object """
+    myClass = inspector.getClass()
+    ```
+
 # About code parsing
 
 Since we want this code to be fast and work with "broken" -when editing a file that may not even be saved to disk-, we don't use any complex lexical parser.
@@ -41,6 +63,8 @@ Instead we just parse the file using rudimentary string processing and some rege
         $myPar2
     ) {
     ```
+
+* For .js files, methods starting with underscore (_) are considered private
 
 
 # Language support
