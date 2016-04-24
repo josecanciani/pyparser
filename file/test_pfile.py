@@ -2,7 +2,7 @@
 import unittest
 import os
 import pprint
-from file.file import *
+from file.pfile import *
 
 class TestFileConstructor(unittest.TestCase):
 
@@ -59,4 +59,4 @@ class TestFileConstructor(unittest.TestCase):
 
 
 if __name__ == '__main__':
-        unittest.main()
+    unittest.main()

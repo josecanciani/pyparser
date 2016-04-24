@@ -1,5 +1,5 @@
 
-from lang.php.grammar.class import Class as PHPClass, Extractor as PHPExtractor
+from lang.php.grammar.pclass import Class as PHPClass, Extractor as PHPExtractor
 from lang.js.grammar.method import Extractor as MethodExtractor
 
 class Class(PHPClass):

@@ -2,10 +2,10 @@
 import unittest
 import os
 import pprint
-from lang.php.grammar.class import Class, Extractor as ClassExtractor
+from lang.php.grammar.pclass import Class, Extractor as ClassExtractor
 from lang.php.grammar.method import Extractor as MethodExtractor
-from file.file import fromCode
-from grammar.class import NoMethodInCurrentLine
+from file.pfile import fromCode
+from grammar.pclass import NoMethodInCurrentLine
 
 class TestClass(unittest.TestCase):
 

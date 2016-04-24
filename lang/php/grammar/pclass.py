@@ -1,5 +1,5 @@
 
-from grammar.class import Class as BaseClass, Extractor as BaseExtractor
+from grammar.pclass import Class as BaseClass, Extractor as BaseExtractor
 from grammar.exception import InvalidSyntax
 from lang.php.grammar.method import Extractor as MethodExtractor
 

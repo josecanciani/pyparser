@@ -1,5 +1,5 @@
 
-from file.file import fromFile, FileDoesNotExists, LanguageNotSupported
+from file.pfile import fromFile, FileDoesNotExists, LanguageNotSupported
 
 class Config(object):
     def __init__(self, classToFileCallback):
