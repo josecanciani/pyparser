@@ -22,7 +22,17 @@ class TestClassInspectorConstructor(unittest.TestCase):
     def _getPhpConfig(self):
         return Config(self._phpClassToFile)
 
-    def test_getMethods(self):
+    def test_getClass(self):
+        # PHP
+        inspector = ClassInspector(self._getPhpConfig(), 'SimpleClass', None)
+        mySimpleClass = inspector.getClass()
+        self.assertEqual('SimpleClass', mySimpleClass.getName())
+        # JS
+        inspector = ClassInspector(self._getJsConfig(), 'SimpleClass', None)
+        mySimpleClass = inspector.getClass()
+        self.assertEqual('SimpleClass', mySimpleClass.getName())
+
+    def test_getInstanceMethods(self):
         # PHP
         inspector = ClassInspector(self._getPhpConfig(), 'SimpleClass', None)
         methods = inspector.getInstanceMethods()
@@ -44,4 +54,4 @@ class TestClassInspectorConstructor(unittest.TestCase):
 
 
 if __name__ == '__main__':
-        unittest.main()
+    unittest.main()
