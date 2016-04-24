@@ -10,22 +10,22 @@ The first implementation will be used to navigate code in Sublime Text.
 
 Since there's no index to match files to classes, a Config object is needed, so you can define how to convert a class name to a file path.
 
-    ```python
-    from pyparser.Config import Config
-    from pyparser.navigator.ClassInspector import *
+```python
+from pyparser.Config import Config
+from pyparser.navigator.ClassInspector import *
 
-    def _phpClassToFile(self, className, namespace):
-        """ Converts any class name into a file path where to find it"""
-        return os.path.dirname(os.path.realpath(__file__)) + '/../classes/' + className.replace('_', '/') + '.php'
+def _phpClassToFile(self, className, namespace):
+    """ Converts any class name into a file path where to find it"""
+    return os.path.dirname(os.path.realpath(__file__)) + '/../classes/' + className.replace('_', '/') + '.php'
 
-    config = Config(_phpClassToFile)
-    inspector = ClassInspector(config, 'MyClassNameToInsect', None)
+config = Config(_phpClassToFile)
+inspector = ClassInspector(config, 'MyClassNameToInsect', None)
 
-    """ This will give you all methods you can access from MyClassNameToInsect (anything you can use from "$this->")"""
-    thisMethods = inspector.getInstanceMethods()
+""" This will give you all methods you can access from MyClassNameToInsect (anything you can use from "$this->")"""
+thisMethods = inspector.getInstanceMethods()
 
-    """ This returns a raw class object """
-    myClass = inspector.getClass()
+""" This returns a raw class object """
+myClass = inspector.getClass()
     ```
 
 # About code parsing
