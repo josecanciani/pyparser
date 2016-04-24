@@ -2,7 +2,7 @@
 import unittest
 import os
 import pprint
-from lang.php.grammar.Class import Extractor
+from lang.php.grammar.class import Extractor
 
 class TestClass(unittest.TestCase):
 

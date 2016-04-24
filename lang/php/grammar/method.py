@@ -1,6 +1,6 @@
 
-from grammar.Method import Method as BaseMethod, Extractor as BaseExtractor
-from grammar.Exception import InvalidSyntax
+from grammar.method import Method as BaseMethod, Extractor as BaseExtractor
+from grammar.exception import InvalidSyntax
 
 keywords = ['static', 'protected', 'public', 'private', 'abstract', 'function']
 

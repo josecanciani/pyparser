@@ -1,7 +1,7 @@
 
-from grammar.Class import Class as BaseClass, Extractor as BaseExtractor
-from grammar.Exception import InvalidSyntax
-from lang.php.grammar.Method import Extractor as MethodExtractor
+from grammar.class import Class as BaseClass, Extractor as BaseExtractor
+from grammar.exception import InvalidSyntax
+from lang.php.grammar.method import Extractor as MethodExtractor
 
 keywords = ['abstract', 'class']
 

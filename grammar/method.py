@@ -1,5 +1,5 @@
 
-from grammar.Code import Code
+from grammar.code import Code
 
 class Method(Code):
     def getName(self):

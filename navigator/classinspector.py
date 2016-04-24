@@ -1,5 +1,5 @@
 
-from file.File import ClassDoesNotExists
+from file.file import ClassDoesNotExists
 
 class ClassInspector(object):
     def __init__(self, config, className, namespace):

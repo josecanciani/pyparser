@@ -2,7 +2,7 @@
 import unittest
 import os
 import pprint
-from file.File import *
+from file.file import *
 
 class TestFileConstructor(unittest.TestCase):
 

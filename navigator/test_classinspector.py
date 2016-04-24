@@ -2,8 +2,8 @@
 import unittest
 import os
 import pprint
-from Config import Config
-from navigator.ClassInspector import *
+from config import Config
+from navigator.classinspector import *
 
 class TestClassInspectorConstructor(unittest.TestCase):
 

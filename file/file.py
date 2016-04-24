@@ -23,7 +23,7 @@ class File(object):
     def getLang(self):
         return self.lang
     def getClasses(self):
-        package = 'lang.' + self.getLang() + '.grammar.Class'
+        package = 'lang.' + self.getLang() + '.grammar.class'
         className = 'Extractor'
         Extractor = getattr(__import__(package, fromlist=[className]), className)
         extractor = Extractor(self)

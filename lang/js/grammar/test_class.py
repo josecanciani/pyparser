@@ -2,7 +2,7 @@
 import unittest
 import os
 import pprint
-from lang.js.grammar.Class import Extractor
+from lang.js.grammar.class import Extractor
 
 class TestClass(unittest.TestCase):
 

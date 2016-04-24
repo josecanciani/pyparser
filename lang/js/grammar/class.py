@@ -1,6 +1,6 @@
 
-from lang.php.grammar.Class import Class as PHPClass, Extractor as PHPExtractor
-from lang.js.grammar.Method import Extractor as MethodExtractor
+from lang.php.grammar.class import Class as PHPClass, Extractor as PHPExtractor
+from lang.js.grammar.method import Extractor as MethodExtractor
 
 class Class(PHPClass):
     def getMethods(self):

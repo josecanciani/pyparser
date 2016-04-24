@@ -2,10 +2,10 @@
 import unittest
 import os
 import pprint
-from lang.js.grammar.Class import Class, Extractor as ClassExtractor
-from lang.js.grammar.Method import Extractor as MethodExtractor
-from file.File import fromCode
-from grammar.Class import NoMethodInCurrentLine
+from lang.js.grammar.class import Class, Extractor as ClassExtractor
+from lang.js.grammar.method import Extractor as MethodExtractor
+from file.file import fromCode
+from grammar.class import NoMethodInCurrentLine
 
 class TestClass(unittest.TestCase):
 
