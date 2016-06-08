@@ -37,7 +37,7 @@ class Extractor(BaseExtractor):
         lineNumber = 0
         for line in self.parent.getCode().splitlines(True)[1:]:
             lineNumber += 1
-            if findClosure == None:
+            if findClosure == None and line.find('function ') >= 0:
                 for keyword in keywords:
                     if line.lstrip().startswith(keyword):
                         if line.find('abstract ') >= 0:

@@ -64,6 +64,14 @@ class TestClass(unittest.TestCase):
         except NoMethodInCurrentLine as e:
             self.assertEqual('0', str(e))
 
+    def test_extractNotConfusingProperties(self):
+        code = '\nclass MyClass {\n\n   public $pp = null;\n   }\n}\n'
+        file = fromCode(code, 'php', 4)
+        myClass = file.getCurrentClass()
+        self.assertEqual('MyClass', myClass.getName())
+        self.assertEqual(3, myClass.getCurrentLineNumber())
+        self.assertEqual(0, len(myClass.getMethods()), 'No methods should be found')
+
     def _getMethodFromClassCode(self, code):
         classExtractor = ClassExtractor()
         classes = classExtractor.getClasses(code)
