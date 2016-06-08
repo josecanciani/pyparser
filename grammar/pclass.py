@@ -18,6 +18,16 @@ class Class(Code):
             if not method.isPrivate() and not method.isAbstract():
                 methods.append(method)
         return methods
+    def getProperties(self):
+        """Return all variables and constants in class"""
+        raise NotImplementedError
+    def getInstanceProperties(self):
+        """Return only public and protected properties in class"""
+        props = []
+        for method in self.getProperties():
+            if not prop.isPrivate() and not prop.isConstant():
+                props.append(prop)
+        return props
     def getFile(self):
         return self.parent
     def getCurrentMethod(self):
