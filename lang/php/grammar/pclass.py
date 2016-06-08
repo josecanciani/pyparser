@@ -2,6 +2,7 @@
 from grammar.pclass import Class as BaseClass, Extractor as BaseExtractor
 from grammar.exception import InvalidSyntax
 from lang.php.grammar.method import Extractor as MethodExtractor
+from lang.php.grammar.prop import Extractor as PropExtractor
 
 keywords = ['abstract', 'class']
 
@@ -33,6 +34,9 @@ class Class(BaseClass):
     def getMethods(self):
         extractor = MethodExtractor(self)
         return extractor.getMethods()
+    def getProperties(self):
+        extractor = PropExtractor(self)
+        return extractor.getProperties()
 
 class Extractor(BaseExtractor):
     def createClass(self, code, startLineNumber):
