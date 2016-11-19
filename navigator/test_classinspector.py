@@ -1,6 +1,6 @@
 
 import unittest
-import os
+from os import path
 import pprint
 from config import Config
 from navigator.classinspector import *
@@ -11,19 +11,19 @@ class TestClassInspectorConstructor(unittest.TestCase):
         return pprint.PrettyPrinter(indent = 2)
 
     def _phpClassToFile(self, className, namespace):
-        return os.path.dirname(os.path.realpath(__file__)) + '/../RESOURCE/' + className + '.php'
+        return path.dirname(path.realpath(__file__)) + '/../RESOURCE/' + className + '.php'
 
     def _jsClassToFile(self, className, namespace):
-        return os.path.dirname(os.path.realpath(__file__)) + '/../RESOURCE/' + className + '.js'
+        return path.dirname(path.realpath(__file__)) + '/../RESOURCE/' + className + '.js'
 
     def _getCodeRoot(self):
-        return os.path.dirname(os.path.realpath(__file__)) + '/../RESOURCE'
+        return path.dirname(path.realpath(__file__)) + '/../RESOURCE'
 
     def _getJsConfig(self):
-        return Config(self._jsClassToFile, self._getCodeRoot())
+        return Config(self._jsClassToFile, self._getCodeRoot(), 'js')
 
     def _getPhpConfig(self):
-        return Config(self._phpClassToFile, self._getCodeRoot())
+        return Config(self._phpClassToFile, self._getCodeRoot(), 'php')
 
     def test_getClass(self):
         # PHP

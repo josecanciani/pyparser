@@ -3,11 +3,15 @@ from file.pfile import fromFile, FileDoesNotExists, LanguageNotSupported
 from os import path
 
 class Config(object):
-    def __init__(self, classToFileCallback, codeRoot):
+    def __init__(self, classToFileCallback, codeRoot, lang):
         self.classToFileCallback = classToFileCallback
         if not path.isdir(codeRoot):
             raise DirectoryDoesNotExists(codeRoot)
         self.codeRoot = codeRoot
+        self.pyparserRoot = path.dirname(path.realpath(__file__))
+        if not path.isdir(path.join(self.pyparserRoot, 'lang', lang)):
+            raise LanguageNotSupported(lang)
+        self.lang = lang
     def getFileForClassName(self, className, namespace):
         filePath = self.classToFileCallback(className, namespace)
         if filePath:
@@ -16,6 +20,8 @@ class Config(object):
             except (FileDoesNotExists, LanguageNotSupported):
                 pass
         return None
+    def getLanguageExtension(self):
+        return lang;
 
 class DirectoryDoesNotExists(IOError):
     def __init__(self, path):
