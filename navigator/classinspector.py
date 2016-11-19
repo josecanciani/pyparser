@@ -2,7 +2,7 @@
 from file.pfile import ClassDoesNotExists
 
 class ClassInspector(object):
-    def __init__(self, config, className, namespace):
+    def __init__(self, config, className, namespace = None):
         self.className = className
         self.namespace = namespace
         self.config = config

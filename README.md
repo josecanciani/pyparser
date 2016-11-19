@@ -19,7 +19,7 @@ def _phpClassToFile(self, className, namespace):
     return os.path.dirname(os.path.realpath(__file__)) + '/../classes/' + className.replace('_', '/') + '.php'
 
 config = Config(_phpClassToFile)
-inspector = ClassInspector(config, 'MyClassNameToInsect', None)
+inspector = ClassInspector(config, 'MyClassNameToInsect')
 
 """ This will give you all methods you can access from MyClassNameToInsect (anything you can use from "$this->")"""
 thisMethods = inspector.getInstanceMethods()
