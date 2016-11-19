@@ -3,7 +3,7 @@ from os import path
 import pprint
 from shell.command import *
 
-class TestFileConstructor(unittest.TestCase):
+class TestClassCommand(unittest.TestCase):
 
     def _getPrinter(self):
         return pprint.PrettyPrinter(indent = 2)
