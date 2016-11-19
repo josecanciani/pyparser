@@ -18,7 +18,7 @@ def _phpClassToFile(self, className, namespace):
     """ Converts any class name into a file path where to find it"""
     return os.path.dirname(os.path.realpath(__file__)) + '/../classes/' + className.replace('_', '/') + '.php'
 
-config = Config(_phpClassToFile)
+config = Config(_phpClassToFile, '/path/to/your/code/root')
 inspector = ClassInspector(config, 'MyClassNameToInsect')
 
 """ This will give you all methods you can access from MyClassNameToInsect (anything you can use from "$this->")"""

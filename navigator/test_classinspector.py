@@ -16,11 +16,14 @@ class TestClassInspectorConstructor(unittest.TestCase):
     def _jsClassToFile(self, className, namespace):
         return os.path.dirname(os.path.realpath(__file__)) + '/../RESOURCE/' + className + '.js'
 
+    def _getCodeRoot(self):
+        return os.path.dirname(os.path.realpath(__file__)) + '/../RESOURCE'
+
     def _getJsConfig(self):
-        return Config(self._jsClassToFile)
+        return Config(self._jsClassToFile, self._getCodeRoot())
 
     def _getPhpConfig(self):
-        return Config(self._phpClassToFile)
+        return Config(self._phpClassToFile, self._getCodeRoot())
 
     def test_getClass(self):
         # PHP
