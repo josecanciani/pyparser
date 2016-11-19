@@ -21,7 +21,9 @@ class Config(object):
                 pass
         return None
     def getLanguageExtension(self):
-        return lang;
+        return lang
+    def getCodeRoot(self):
+        return self.codeRoot
 
 class DirectoryDoesNotExists(IOError):
     def __init__(self, path):
