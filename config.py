@@ -21,7 +21,7 @@ class Config(object):
                 pass
         return None
     def getLanguageExtension(self):
-        return lang
+        return self.lang
     def getCodeRoot(self):
         return self.codeRoot
 
