@@ -1,7 +1,4 @@
-
 import unittest
-import os
-import pprint
 from lang.php.grammar.pclass import Extractor
 
 class TestClass(unittest.TestCase):
@@ -27,6 +24,5 @@ class TestClass(unittest.TestCase):
         self.assertEqual('MyParentClass', myClass.getExtendsFromName())
         self.assertEqual(True, myClass.isAbstract())
 
-
 if __name__ == '__main__':
-        unittest.main()
+    unittest.main()
