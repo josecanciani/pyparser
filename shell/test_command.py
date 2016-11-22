@@ -16,7 +16,7 @@ class TestClassCommand(unittest.TestCase):
 
     def test_lsRoot(self):
         self._lsRootCallbackRun = False
-        command = Command('ls', '/', self._lsRootCallback)
+        command = Command('ls', '/', self._lsRootCallback, self._dummyCallback)
         command.join(5)
         self.assertTrue(self._lsRootCallbackRun, 'Something failed running "ls /" command')
 
@@ -38,7 +38,7 @@ class TestClassCommand(unittest.TestCase):
     def test_stdErr(self):
         self._stdErrCallbackRun = False
         testCommand = path.join(path.dirname(path.realpath(__file__)), '..', 'RESOURCE', 'testCommandOutput.sh')
-        command = Command(testCommand, '/', self._stdErrCallback)
+        command = Command(testCommand, '/', self._stdErrCallback, self._dummyCallback)
         command.join(5)
         self.assertTrue(self._stdErrCallbackRun, 'Something failed running "ls /" command')
 
