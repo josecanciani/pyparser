@@ -1,4 +1,3 @@
-
 from file.pfile import ClassDoesNotExists
 
 class ClassInspector(object):

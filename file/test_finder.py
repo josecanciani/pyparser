@@ -20,9 +20,12 @@ class TestClassFinderConstructor(unittest.TestCase):
         self.assertEqual(len(matches), 1)
         self.assertEqual(matches[0].getLine(), 'class SimpleClass extends ParentClass {')
 
+    def _findClassFileErrorCallback(self, exception):
+        raise exception
+
     def test_findClassFile(self):
         self._findClassFileCallbackRun = False
-        finder = Finder(self._getPhpConfig(), 'extends ParentClass', self._findClassFileCallback)
+        finder = Finder('extends ParentClass', self._getCodeRoot(), 'php', self._findClassFileCallback, self._findClassFileErrorCallback)
         finder.join(5)
         self.assertTrue(self._findClassFileCallbackRun, 'Something failed running finder')
 

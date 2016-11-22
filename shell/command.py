@@ -7,7 +7,7 @@ class Command(object):
         self.path = path
         self.callback = callback
         self.errorCallback = errorCallback
-        self.thread = threading.Thread(target=self._thread)
+        self.thread = threading.Thread(target = self._thread)
         self.thread.start()
     def _thread(self):
         try:
@@ -22,4 +22,4 @@ class Command(object):
             else:
                 raise e
     def join(self, timeout=None):
-        return self.thread.join(timeout)
+        return self.thread.join(timeout) if self.thread else None
