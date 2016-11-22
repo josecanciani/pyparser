@@ -8,6 +8,8 @@ class Class(PHPClass):
         return extractor.getMethods()
     def isAbstract(self):
         return False
+    def getExtension(self):
+        return 'js'
 
 class Extractor(PHPExtractor):
     def createClass(self, code, startLineNumber):

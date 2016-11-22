@@ -11,6 +11,9 @@ class Class(Code):
     def getMethods(self):
         """Return all methods in class"""
         raise NotImplementedError
+    def getExtension(self):
+        """Get file extension for this language"""
+        raise NotImplementedError
     def getInstanceMethods(self):
         """Return only public and protected methods in class"""
         methods = []

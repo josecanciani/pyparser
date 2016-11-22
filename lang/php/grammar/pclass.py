@@ -37,6 +37,8 @@ class Class(BaseClass):
     def getProperties(self):
         extractor = PropExtractor(self)
         return extractor.getProperties()
+    def getExtension(self):
+        return 'php'
 
 class Extractor(BaseExtractor):
     def createClass(self, code, startLineNumber):
