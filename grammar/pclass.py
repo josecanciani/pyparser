@@ -38,6 +38,8 @@ class Class(Code):
             if self.getCurrentLineNumber() >= parsedMethod.getStartLineNumber() and self.getCurrentLineNumber() <= parsedMethod.getLastLineNumber():
                 return parsedMethod
         raise NoMethodInCurrentLine(self.getCurrentLineNumber())
+    def getRegexForValidCharactersInName(self):
+        return 'a-zA-Z0-9_-'
 
 class Extractor(object):
     def __init__(self, parent = None):
