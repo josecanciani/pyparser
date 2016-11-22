@@ -49,4 +49,3 @@ class NoMethodInCurrentLine(Exception):
         self.lineNumber = lineNumber
     def __str__(self):
         return repr(self.lineNumber)
-

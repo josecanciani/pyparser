@@ -1,14 +1,10 @@
 
 import unittest
 from os import path
-import pprint
 from config import Config
 from navigator.classinspector import *
 
 class TestClassInspectorConstructor(unittest.TestCase):
-
-    def _getPrinter(self):
-        return pprint.PrettyPrinter(indent = 2)
 
     def _phpClassToFile(self, className, namespace):
         return path.dirname(path.realpath(__file__)) + '/../RESOURCE/' + className + '.php'

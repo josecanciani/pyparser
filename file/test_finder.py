@@ -6,14 +6,8 @@ from file.finder import Finder
 
 class TestClassFinderConstructor(unittest.TestCase):
 
-    def _phpClassToFile(self, className, namespace):
-        return path.dirname(path.realpath(__file__)) + '/../RESOURCE/' + className + '.php'
-
     def _getCodeRoot(self):
         return path.dirname(path.realpath(__file__)) + '/../RESOURCE'
-
-    def _getPhpConfig(self):
-        return Config(self._phpClassToFile, self._getCodeRoot(), 'php')
 
     def _findClassFileCallback(self, matches):
         self._findClassFileCallbackRun = True
