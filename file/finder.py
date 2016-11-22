@@ -4,8 +4,10 @@ from shell.command import Command
 class Finder(object):
     def __init__(self, config, pattern, callback):
         self.callback = callback
-        include = '--include=*.' + config.getLanguageExtension()
-        self.command = Command(['rgrep', pattern, config.getCodeRoot(), include], config.getCodeRoot(), self._matchCallback)
+        self.errorCallback = errorCallback
+        command = ['rgrep', pattern, path]
+        if fileExtension:
+            command.append('--include=*.' + fileExtension)
     def join(self, timeout=None):
         return self.command.join(timeout)
     def _matchCallback(self, stdout, stderr):
