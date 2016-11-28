@@ -1,0 +1,4 @@
+<?
+
+class SimpleClassExtension extends SimpleClass {
+}

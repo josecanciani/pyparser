@@ -34,11 +34,12 @@ class TestClassExtensionFinder(unittest.TestCase):
         phpConfig = self._getPhpConfig()
         inspector = ClassInspector(phpConfig, className)
         pclass = inspector.getClass(className)
-        finder = ExtensionFinder(phpConfig, pclass, self._getPHPClassExtensions, self._dummyCallback)
+        finder = ExtensionFinder(phpConfig, pclass, None, self._getPHPClassExtensions, self._dummyCallback)
         finder.join(5)
         self.assertTrue(len(self._getPHPClassExtensionsResults) > 0, 'Callback _getPHPClassExtensions was never called')
-        self.assertEqual(len(self._getPHPClassExtensionsResults), 1)
+        self.assertEqual(len(self._getPHPClassExtensionsResults), 2)
         self.assertEqual(self._getPHPClassExtensionsResults[0].getName(), 'SimpleClass')
+        self.assertEqual(self._getPHPClassExtensionsResults[1].getName(), 'SimpleClassExtension')
 
 if __name__ == '__main__':
     unittest.main()
