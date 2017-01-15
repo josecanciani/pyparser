@@ -8,6 +8,8 @@ The first implementation will be used to navigate code in Sublime Text.
 
 # Usage
 
+I started this project to split language parsing logic out of my employers plugin for Sublime text. So of course there's a Sublime plugin you can use to get the benefits of this parser: https://github.com/josecanciani/sublimepyparser. But you can just use it in your projects directly, and here follows some hints.
+
 Since there's no index to match files to classes, a Config object is needed, so you can define how to convert a class name to a file path.
 
 ```python
@@ -103,3 +105,9 @@ Note that namespaces are not supported, but may in the future. you need to retur
 Run this on the project folder:
 
 $ python -m unittest discover
+
+# Projects using pyparser
+
+* Sublime's pyparser: https://github.com/josecanciani/sublimepyparser Usage the fast parsing capabilities of this library in Sublime Text editor.
+
+
