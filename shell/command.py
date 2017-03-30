@@ -16,11 +16,13 @@ class Command(object):
             stdout, stderr = process.communicate()
             decodedStdout = stdout.decode("UTF-8")
             decodedStderr = stderr.decode("UTF-8")
-            self.callback(decodedStdout, decodedStderr)
         except OSError as e:
             self.errorCallback(e)
+            return
         except Exception as e:
             self.errorCallback(UknownException(str(e)))
+            return
+        self.callback(decodedStdout, decodedStderr)
 
     def join(self, timeout=None):
         return self.thread.join(timeout) if self.thread else None
