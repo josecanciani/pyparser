@@ -7,20 +7,17 @@ from navigator.classinspector import ClassInspector
 
 class TestClassExtensionFinder(unittest.TestCase):
 
-    def _phpClassToFile(self, className, namespace):
-        return path.dirname(path.realpath(__file__)) + '/../RESOURCE/' + className + '.php'
-
-    def _jsClassToFile(self, className, namespace):
-        return path.dirname(path.realpath(__file__)) + '/../RESOURCE/' + className + '.js'
+    def _classToFile(self, className, lang, namespace):
+        return path.dirname(path.realpath(__file__)) + '/../RESOURCE/' + className + '.' + lang
 
     def _getCodeRoot(self):
         return path.dirname(path.realpath(__file__)) + '/../RESOURCE'
 
     def _getJsConfig(self):
-        return Config(self._jsClassToFile, self._getCodeRoot(), 'js')
+        return Config(self._classToFile, self._getCodeRoot(), 'js')
 
     def _getPhpConfig(self):
-        return Config(self._phpClassToFile, self._getCodeRoot(), 'php')
+        return Config(self._classToFile, self._getCodeRoot(), 'php')
 
     def _getPHPClassExtensions(self, results):
         self._getPHPClassExtensionsResults = results

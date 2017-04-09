@@ -13,7 +13,7 @@ class Config(object):
             raise LanguageNotSupported(lang)
         self.lang = lang
     def getFileForClassName(self, className, namespace):
-        filePath = self.classToFileCallback(className, namespace)
+        filePath = self.classToFileCallback(className, self.lang, namespace)
         if filePath:
             try:
                 return fromFile(filePath)

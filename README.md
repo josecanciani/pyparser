@@ -16,7 +16,7 @@ Since there's no index to match files to classes, a Config object is needed, so 
 from pyparser.config import Config
 from pyparser.navigator.classinspector import ClassInspector
 
-def _phpClassToFile(self, className, namespace):
+def _phpClassToFile(self, className, lang, namespace):
     """ Converts any class name into a file path where to find it"""
     return os.path.dirname(os.path.realpath(__file__)) + '/../classes/' + className.replace('_', '/') + '.php'
 
@@ -92,7 +92,7 @@ Since the main objetive is speed and live parsing, we don't create indexes. So w
 This translation depends on how your code is organized, so you need to provide a callback that will be in charge of the translation.
 
     ```python
-    def classToFile(className, namespace):
+    def classToFile(className, lang, namespace):
         'your code here'
         return filePath
     ```
