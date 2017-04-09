@@ -1,6 +1,6 @@
 
-from navigator.classinspector import ClassInspector
-from navigator.extensionfinder import ExtensionFinder
+from pyparser.navigator.classinspector import ClassInspector
+from pyparser.navigator.extensionfinder import ExtensionFinder
 
 class ExtensionTreePrinter(object):
     def __init__(self, config, className, onComplete, onErrorCallback = None):

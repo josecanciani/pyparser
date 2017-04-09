@@ -1,6 +1,6 @@
 
 import unittest
-from common.dto import Dto
+from pyparser.common.dto import Dto
 
 class TestClassDto(unittest.TestCase):
     def _getTestDto(self):

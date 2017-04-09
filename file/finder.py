@@ -1,5 +1,5 @@
-from file.pfile import File
-from shell.command import Command
+from pyparser.file.pfile import File
+from pyparser.shell.command import Command
 
 class Finder(object):
     def __init__(self, pattern, path, fileExtension, callback, errorCallback):

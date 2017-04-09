@@ -1,6 +1,6 @@
 
 import unittest
-from lang.php.discover.statement import Statement
+from pyparser.lang.php.discover.statement import Statement
 
 class TestClass(unittest.TestCase):
     def test_extractClassVar(self):

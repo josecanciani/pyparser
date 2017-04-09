@@ -1,5 +1,5 @@
 
-from grammar.code import Code
+from pyparser.grammar.code import Code
 
 class Method(Code):
     def getName(self):

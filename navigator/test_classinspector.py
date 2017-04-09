@@ -1,8 +1,8 @@
 
 import unittest
 from os import path
-from config import Config
-from navigator.classinspector import *
+from pyparser.config import Config
+from pyparser.navigator.classinspector import *
 
 class TestClassInspectorConstructor(unittest.TestCase):
 

@@ -2,10 +2,10 @@
 import unittest
 import os
 import pprint
-from lang.php.grammar.pclass import Class, Extractor as ClassExtractor
-from lang.php.grammar.method import Extractor as MethodExtractor
-from file.pfile import fromCode
-from grammar.pclass import NoMethodInCurrentLine
+from pyparser.lang.php.grammar.pclass import Class, Extractor as ClassExtractor
+from pyparser.lang.php.grammar.method import Extractor as MethodExtractor
+from pyparser.file.pfile import fromCode
+from pyparser.grammar.pclass import NoMethodInCurrentLine
 
 class TestClass(unittest.TestCase):
 

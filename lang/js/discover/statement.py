@@ -1,4 +1,4 @@
-from discover.statement import Statement as BaseStatement
+from pyparser.discover.statement import Statement as BaseStatement
 
 class Statement(BaseStatement):
     def getStopChars(self, isBefore):

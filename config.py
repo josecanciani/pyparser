@@ -1,5 +1,5 @@
 
-from file.pfile import fromFile, FileDoesNotExists, LanguageNotSupported
+from pyparser.file.pfile import fromFile, FileDoesNotExists, LanguageNotSupported
 from os import path
 
 class Config(object):

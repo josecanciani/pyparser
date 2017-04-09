@@ -1,6 +1,6 @@
 
-from grammar.prop import Prop as BaseProp, Extractor as BaseExtractor
-from grammar.exception import InvalidSyntax
+from pyparser.grammar.prop import Prop as BaseProp, Extractor as BaseExtractor
+from pyparser.grammar.exception import InvalidSyntax
 
 keywords = ['static', 'protected', 'public', 'private', 'const', '$']
 

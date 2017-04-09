@@ -1,7 +1,7 @@
 import unittest
 from os import path
 import pprint
-from shell.command import *
+from pyparser.shell.command import *
 
 class TestClassCommand(unittest.TestCase):
 

@@ -1,9 +1,9 @@
 
 import unittest
 from os import path
-from config import Config
-from navigator.extensionfinder import ExtensionFinder
-from navigator.classinspector import ClassInspector
+from pyparser.config import Config
+from pyparser.navigator.extensionfinder import ExtensionFinder
+from pyparser.navigator.classinspector import ClassInspector
 
 class TestClassExtensionFinder(unittest.TestCase):
 

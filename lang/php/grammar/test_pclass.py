@@ -1,5 +1,5 @@
 import unittest
-from lang.php.grammar.pclass import Extractor
+from pyparser.lang.php.grammar.pclass import Extractor
 
 class TestClass(unittest.TestCase):
 

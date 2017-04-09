@@ -102,9 +102,9 @@ Note that namespaces are not supported, but may in the future. you need to retur
 
 # Unit testing
 
-Run this on the project folder:
+Run this on the project parent's folder:
 
-$ python -m unittest discover
+$ python -m unittest discover pyparser/
 
 # Projects using pyparser
 

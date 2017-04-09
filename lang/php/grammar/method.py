@@ -1,6 +1,6 @@
 
-from grammar.method import Method as BaseMethod, Extractor as BaseExtractor
-from grammar.exception import InvalidSyntax
+from pyparser.grammar.method import Method as BaseMethod, Extractor as BaseExtractor
+from pyparser.grammar.exception import InvalidSyntax
 
 keywords = ['static', 'protected', 'public', 'private', 'abstract', 'function']
 

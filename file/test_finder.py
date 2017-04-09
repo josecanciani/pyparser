@@ -1,8 +1,8 @@
 
 import unittest
 from os import path
-from config import Config
-from file.finder import Finder
+from pyparser.config import Config
+from pyparser.file.finder import Finder
 
 class TestClassFinderConstructor(unittest.TestCase):
 

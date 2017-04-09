@@ -1,8 +1,8 @@
 
 import unittest
 from os import path
-from config import Config
-from tool.extensiontreeprinter import ExtensionTreePrinter
+from pyparser.config import Config
+from pyparser.tool.extensiontreeprinter import ExtensionTreePrinter
 
 class TestClassToolExtensionTreePrinter(unittest.TestCase):
 

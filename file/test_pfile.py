@@ -2,7 +2,7 @@
 import unittest
 import os
 import pprint
-from file.pfile import *
+from pyparser.file.pfile import *
 
 class TestFileConstructor(unittest.TestCase):
 

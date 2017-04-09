@@ -1,6 +1,6 @@
-from file.finder import Finder
-from file.pfile import fromFile
-from common.dto import Dto
+from pyparser.file.finder import Finder
+from pyparser.file.pfile import fromFile
+from pyparser.common.dto import Dto
 
 class ExtensionFinder(object):
     def __init__(self, config, pclass, options, callback, errorCallback):
