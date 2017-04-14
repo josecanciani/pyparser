@@ -4,7 +4,7 @@ import os
 def fromFile(filePath):
     filename, extension = os.path.splitext(filePath)
     try:
-        return File(open(filePath, 'r').read(), extension[1:])
+        return File(open(filePath, 'r').read(), extension[1:], 0, filePath)
     except IOError:
         raise FileDoesNotExists(filePath)
 
@@ -12,10 +12,11 @@ def fromCode(text, lang, currentLine):
     return File(text, lang, currentLine)
 
 class File(object):
-    def __init__(self, code, lang, currentLine = 0):
+    def __init__(self, code, lang, currentLine = 0, path = None):
         self.code = code
         self.lang = lang
         self.currentLineNumber = currentLine
+        self.path = path
         if self.lang not in ('php', 'js'):
             raise LanguageNotSupported(self.lang)
     def getCode(self):
@@ -40,6 +41,8 @@ class File(object):
         raise NoClassInCurrentLine(self.currentLineNumber)
     def getCurrentLineNumber(self):
         return self.currentLineNumber
+    def getPath(self):
+        return self.path
 
 class FileDoesNotExists(IOError):
     def __init__(self, path):

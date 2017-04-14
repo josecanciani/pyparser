@@ -12,6 +12,7 @@ class ExtensionFinder(object):
         self.results = []
         self.recursiveException = None
         nameRegex = pclass.getRegexForValidCharactersInName()
+        # FIXME: this should probably be provided by grammar.pclass
         regex = 'class\s+[' + nameRegex + ']+\s+extends\s+' + self.pclass.getName() + '[^' + nameRegex + ']{1}'
         self.thread = Finder(regex, self.config.getCodeRoot(), self.pclass.getExtension(), self._onFindResults, self._onError)
 
