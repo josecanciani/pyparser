@@ -11,9 +11,11 @@ class TestClassFinderConstructor(unittest.TestCase):
 
     def _findClassFileCallback(self, matches):
         self._findClassFileCallbackRun = True
-        self.assertEqual(len(matches), 2)
+        self.assertEqual(len(matches), 3)
+        matches.sort(key = lambda x: x.getLine())
         self.assertEqual(matches[0].getLine(), 'class SimpleClass extends ParentClass {')
-        self.assertEqual(matches[1].getLine(), 'class ZSimpleClass extends ParentClass {')
+        self.assertEqual(matches[1].getLine(), 'class SimpleClass2 extends ParentClass {')
+        self.assertEqual(matches[2].getLine(), 'class ZSimpleClass extends ParentClass {')
 
     def _findClassFileErrorCallback(self, exception):
         raise exception
