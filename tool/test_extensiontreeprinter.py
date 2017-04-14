@@ -27,7 +27,7 @@ class TestClassToolExtensionTreePrinter(unittest.TestCase):
         printer = ExtensionTreePrinter(phpConfig, 'ParentClass', self._getTreePrinter, self._dummyCallback)
         printer.join(5)
         self.assertTrue(len(self._getTreePrinterResult) > 0, 'Callback _getPHPClassExtensions was never called')
-        self.assertEqual(self._getTreePrinterResult, 'ParentClass\n    SimpleClass\n        SimpleClassExtension\n    ZSimpleClass\n')
+        self.assertEqual(self._getTreePrinterResult, 'ParentClass\n    SimpleClass\n        SimpleClassExtension\n    SimpleClass2\n    ZSimpleClass\n')
 
     def test_getPHPFullClassExtensions(self):
         self._getTreePrinterResult = ''
@@ -35,7 +35,7 @@ class TestClassToolExtensionTreePrinter(unittest.TestCase):
         printer = ExtensionFullTreePrinter(phpConfig, 'SimpleClass', self._getTreePrinter, self._dummyCallback)
         printer.join(5)
         self.assertTrue(len(self._getTreePrinterResult) > 0, 'Callback _getPHPClassExtensions was never called')
-        self.assertEqual(self._getTreePrinterResult, 'ParentClass\n    SimpleClass\n        SimpleClassExtension\n    ZSimpleClass\n')
+        self.assertEqual(self._getTreePrinterResult, 'ParentClass\n    SimpleClass\n        SimpleClassExtension\n    SimpleClass2\n    ZSimpleClass\n')
 
 
 if __name__ == '__main__':

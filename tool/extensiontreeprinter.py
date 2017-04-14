@@ -30,11 +30,11 @@ class ExtensionTreePrinter(object):
         indent = 0
         tree = self.pclass.getName() + '\n'
         for pclass in self.results:
+            while pclass.getExtendsFromName() != lifo[-1].getName():
+                lifo.pop()
+                indent -= 4
             if pclass.getExtendsFromName() == lifo[-1].getName():
                 indent += 4
-            else:
-                lifo[:-1]
-                indent -= 4
             lifo.append(pclass)
             tree += ''.rjust(indent,' ') + pclass.getName() + '\n'
         return tree
