@@ -1,16 +1,26 @@
 
 from pyparser.navigator.classinspector import ClassInspector
 from pyparser.navigator.extensionfinder import ExtensionFinder
+from pyparser.file.pfile import ClassDoesNotExists
 
 class ExtensionTreePrinter(object):
     def __init__(self, config, className, onComplete, onErrorCallback = None):
         self.config = config
-        self.className = className
         self.onComplete = onComplete
         self.onErrorCallback = onErrorCallback
-        inspector = ClassInspector(self.config, self.className)
-        self.pclass = inspector.getClass(className)
-        self.thread = ExtensionFinder(self.config, self.pclass, None, self._onResults, self._onError)
+        self._setClass(self._getClass(className), className)
+        if self.pclass:
+            self.thread = ExtensionFinder(self.config, self.pclass, None, self._onResults, self._onError)
+
+    def _getClass(self, className):
+        inspector = ClassInspector(self.config, className)
+        return inspector.getClass(className)
+
+    def _setClass(self, pclass, className):
+        if pclass:
+            self.pclass = pclass
+        else:
+            self._onError(ClassDoesNotExists(className), className)
 
     def join(self, timeout=None):
         return self.thread.join(timeout) if self.thread else None
@@ -39,3 +49,10 @@ class ExtensionTreePrinter(object):
         else:
             raise err
 
+class ExtensionFullTreePrinter(ExtensionTreePrinter):
+    def _setClass(self, pclass, className):
+        self.pclass = self._getTopClass(pclass)
+
+    def _getTopClass(self, pclass):
+        parent = self._getClass(pclass.getExtendsFromName()) if pclass.getExtendsFromName() else None
+        return self._getTopClass(parent) if parent else pclass

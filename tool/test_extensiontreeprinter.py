@@ -2,7 +2,7 @@
 import unittest
 from os import path
 from pyparser.config import Config
-from pyparser.tool.extensiontreeprinter import ExtensionTreePrinter
+from pyparser.tool.extensiontreeprinter import ExtensionTreePrinter, ExtensionFullTreePrinter
 
 class TestClassToolExtensionTreePrinter(unittest.TestCase):
 
@@ -25,6 +25,14 @@ class TestClassToolExtensionTreePrinter(unittest.TestCase):
         self._getTreePrinterResult = ''
         phpConfig = self._getPhpConfig()
         printer = ExtensionTreePrinter(phpConfig, 'ParentClass', self._getTreePrinter, self._dummyCallback)
+        printer.join(5)
+        self.assertTrue(len(self._getTreePrinterResult) > 0, 'Callback _getPHPClassExtensions was never called')
+        self.assertEqual(self._getTreePrinterResult, 'ParentClass\n    SimpleClass\n        SimpleClassExtension\n    ZSimpleClass\n')
+
+    def test_getPHPFullClassExtensions(self):
+        self._getTreePrinterResult = ''
+        phpConfig = self._getPhpConfig()
+        printer = ExtensionFullTreePrinter(phpConfig, 'SimpleClass', self._getTreePrinter, self._dummyCallback)
         printer.join(5)
         self.assertTrue(len(self._getTreePrinterResult) > 0, 'Callback _getPHPClassExtensions was never called')
         self.assertEqual(self._getTreePrinterResult, 'ParentClass\n    SimpleClass\n        SimpleClassExtension\n    ZSimpleClass\n')
