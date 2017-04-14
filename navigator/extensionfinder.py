@@ -21,8 +21,11 @@ class ExtensionFinder(object):
 
     def _onFindResults(self, findResults):
         self.thread = None
+        childLimit = self.options.childLimit
         findResults.sort(key = lambda x: x.getFile())
         for result in findResults:
+            if not childLimit:
+                break
             file = fromFile(result.getFile())
             for pclass in file.getClasses():
                 className = pclass.getExtendsFromName()
@@ -34,6 +37,7 @@ class ExtensionFinder(object):
             if self.recursiveException:
                 self._onError(self.recursiveException)
                 return
+            childLimit = childLimit - 1
         self.callback(self.results)
 
     def _onError(self, exception):
@@ -49,5 +53,6 @@ class ExtensionFinder(object):
 class Options(Dto):
     def __init__(self):
         super(Options, self).__init__({
-            'recursive': True
+            'recursive': True,
+            'childLimit': 10
         })
