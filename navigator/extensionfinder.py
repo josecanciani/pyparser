@@ -21,6 +21,7 @@ class ExtensionFinder(object):
 
     def _onFindResults(self, findResults):
         self.thread = None
+        findResults.sort(key = lambda x: x.getFile())
         for result in findResults:
             file = fromFile(result.getFile())
             for pclass in file.getClasses():
