@@ -111,3 +111,9 @@ $ python -m unittest discover pyparser/
 * Sublime's pyparser: https://github.com/josecanciani/sublimepyparser Usage the fast parsing capabilities of this library in Sublime Text editor.
 
 
+# Development roadmap
+
+* Split discover/statement results
+** discover object class
+* Config callback to open a file.
+** SublimePyparser can give us a text buffer if the file is opened
