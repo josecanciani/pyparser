@@ -49,7 +49,7 @@ class Statement(object):
     def _assertLiteralString(self, letter, previousLetter, inString):
         if letter in self.getStringDelimiters():
             if inString:
-                if letter == inString and previousLetter != self.getStringDelimiterEscape():
+                if letter == inString and (previousLetter is None or previousLetter != self.getStringDelimiterEscape()):
                     return False # not in string anymore
             else:
                 return letter

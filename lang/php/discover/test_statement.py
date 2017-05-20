@@ -27,6 +27,10 @@ class TestClass(unittest.TestCase):
         code = '\nclass HelloWorld {\n   function myFunc() {\n        MyClass::hello();\n   }\n}\n'
         stmt = Statement(code, code.find('he') + 2)
         self.assertEqual('MyClass::hello', stmt.get())
+    def test_extractClassMethodX2WithStringLiterals(self):
+        code = '\nclass HelloWorld {\n   function myFunc() {\n        $this->foo("string")->hello();\n   }\n}\n'
+        stmt = Statement(code, code.find('he') + 2)
+        self.assertEqual('$this->foo("string")->hello', stmt.get())
 
 
 if __name__ == '__main__':
