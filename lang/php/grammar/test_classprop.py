@@ -1,13 +1,11 @@
 
 import unittest
-import os
-import pprint
 from pyparser.lang.php.grammar.pclass import Class, Extractor as ClassExtractor
 from pyparser.lang.php.grammar.classprop import Extractor as PropExtractor
 from pyparser.file.pfile import fromCode
 from pyparser.grammar.pclass import NoMethodInCurrentLine
 
-class TestClass(unittest.TestCase):
+class TestClassProp(unittest.TestCase):
 
     def test_extract(self):
         classCode = '\nclass HelloWorld {\n   $publicVar = 1;\n\n}\n'
