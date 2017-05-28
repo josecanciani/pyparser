@@ -2,7 +2,7 @@
 from pyparser.grammar.pclass import Class as BaseClass, Extractor as BaseExtractor
 from pyparser.grammar.exception import InvalidSyntax
 from pyparser.lang.php.grammar.method import Extractor as MethodExtractor
-from pyparser.lang.php.grammar.prop import Extractor as PropExtractor
+from pyparser.lang.php.grammar.classprop import Extractor as PropExtractor
 
 keywords = ['abstract', 'class']
 

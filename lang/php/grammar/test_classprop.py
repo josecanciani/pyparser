@@ -3,7 +3,7 @@ import unittest
 import os
 import pprint
 from pyparser.lang.php.grammar.pclass import Class, Extractor as ClassExtractor
-from pyparser.lang.php.grammar.prop import Extractor as PropExtractor
+from pyparser.lang.php.grammar.classprop import Extractor as PropExtractor
 from pyparser.file.pfile import fromCode
 from pyparser.grammar.pclass import NoMethodInCurrentLine
 

@@ -1,7 +1,7 @@
 
 from pyparser.grammar.code import Code
 
-class Prop(Code):
+class ClassProp(Code):
     def getName(self):
         raise NotImplementedError
     def isPrivate(self):
