@@ -4,9 +4,9 @@ from pyparser.lang.js.grammar.helper import Helper
 class Statement(BaseStatement):
     def getStopChars(self, isBefore):
         if isBefore:
-            return ['(', '{', '}', ';', ',', '=']
+            return [';', '=', '{']
         else:
-            return [';', ',', ')', '}', ';', '=']
+            return [';', '[', '(']
 
     def getHelper(self):
         return Helper()

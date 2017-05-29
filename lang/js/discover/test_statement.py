@@ -1,6 +1,6 @@
 
 import unittest
-from pyparser.lang.php.discover.statement import Statement
+from pyparser.lang.js.discover.statement import Statement
 
 class TestClass(unittest.TestCase):
     def _checkCurrentPositionType(self, statement, isVariableExpected):
@@ -29,7 +29,7 @@ class TestClass(unittest.TestCase):
         code = '\nclass HelloWorld {\n   myFunc() {\n        hello = "hola";\n   }\n}\n'
         stmt = Statement(code, code.find('he') + 2)
         self.assertEqual('hello', stmt.get())
-        self._checkCurrentPositionType(stmt, False)
+        self._checkCurrentPositionType(stmt, True)
     def test_extractClassStaticMethod(self):
         code = '\nclass HelloWorld {\n   myFunc() {\n        MyClass.hello();\n   }\n}\n'
         stmt = Statement(code, code.find('he') + 2)
