@@ -69,3 +69,6 @@ class Statement(object):
 
     def getStringDelimiterEscape(self):
         return '\\'
+
+    def isCurrentPositionAVariable(self):
+        raise NotImplementedError
