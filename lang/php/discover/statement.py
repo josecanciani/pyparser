@@ -1,5 +1,5 @@
 from pyparser.discover.statement import Statement as BaseStatement
-from pyparser.lang.php.grammar.prop import Prop
+from pyparser.lang.php.grammar.helper import Helper
 
 class Statement(BaseStatement):
     def getStopChars(self, isBefore):
@@ -8,6 +8,5 @@ class Statement(BaseStatement):
         else:
             return [';', '[', '(']
 
-    def isCurrentPositionAVariable(self):
-        prop = Prop('')
-        return prop.checkStatement(self)
+    def getHelper(self):
+        return Helper()

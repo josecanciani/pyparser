@@ -1,3 +1,4 @@
+import re
 
 class Statement(object):
     def __init__(self, code, pos):
@@ -70,5 +71,8 @@ class Statement(object):
     def getStringDelimiterEscape(self):
         return '\\'
 
-    def isCurrentPositionAVariable(self):
+    def getHelper(self):
         raise NotImplementedError
+
+    def isCurrentPositionAVariable(self):
+        return True if re.match(self.getHelper().getVariableRegex(), self.get(), re.MULTILINE) else False

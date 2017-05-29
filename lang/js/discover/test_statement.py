@@ -40,6 +40,15 @@ class TestClass(unittest.TestCase):
         stmt = Statement(code, code.find('he') + 2)
         self.assertEqual('this.foo("string").hello', stmt.get())
         self._checkCurrentPositionType(stmt, False)
+    def test_variableRegex(self):
+        testTrueCases = ("hola", "a234", "holaMundo")
+        testFalseCases = ("Mundo", "como$estas", "123")
+        for test in testTrueCases:
+            stmt = Statement(test, len(test) - 1)
+            self.assertEqual(True, stmt.isCurrentPositionAVariable(), 'expecting var in : ' + test)
+        for test in testFalseCases:
+            stmt = Statement(test, len(test) - 1)
+            self.assertEqual(False, stmt.isCurrentPositionAVariable())
 
 
 if __name__ == '__main__':
