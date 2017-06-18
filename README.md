@@ -115,5 +115,11 @@ $ python -m unittest discover pyparser/
 
 * Split discover/statement results
 ** discover object class
+* get context
+** given a chunk of code and a line, return the appropiate grammar.Code
+** grammar.Code should have parent object
+** by having this context data, we can resolve $this, static, self, parent, etc
+* Combine statement and context for supporting "go to definition"
+* Once we have the definition we can also provide autocomplete options
 * Config callback to open a file.
 ** SublimePyparser can give us a text buffer if the file is opened
