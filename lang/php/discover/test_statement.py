@@ -49,6 +49,15 @@ class TestClass(unittest.TestCase):
         for test in testFalseCases:
             stmt = Statement(test, len(test) - 1)
             self.assertEqual(False, stmt.isCurrentPositionAVariable())
+    def test_methodRegex(self):
+        testTrueCases = ['$myobject->pepe', '$myobject->_pepe', '$this->object->method', '$myobject->mysubobject->mysubsubobject->method', 'myobject->', 'MyClass::pepe', 'MyClass::', 'static::PEPE', 'self::PEPE']
+        testFalseCases = ['$myobject', 'MyClass']
+        for test in testTrueCases:
+            stmt = Statement(test, len(test) - 1)
+            self.assertEqual(True, stmt.isCurrentPositionAClassProperty(), 'expecting class property in : ' + test)
+        for test in testFalseCases:
+            stmt = Statement(test, len(test) - 1)
+            self.assertEqual(False, stmt.isCurrentPositionAClassProperty())
 
 
 if __name__ == '__main__':

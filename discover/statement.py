@@ -76,3 +76,9 @@ class Statement(object):
 
     def isCurrentPositionAVariable(self):
         return True if re.match(self.getHelper().getVariableRegex(), self.get(), re.MULTILINE) else False
+
+    def isCurrentPositionAClassProperty(self):
+        propRegex = '[a-zA-Z0-9-_]*' # we may want to parametrize this later. It can be optional, so we know what to autocomplete later
+        callRegex = '.*' + re.escape(self.getHelper().getClassPropertyCallSymbol()) + propRegex + '$'
+        staticCallRegex = '.*' + re.escape(self.getHelper().getClassStaticCallSymbol()) + propRegex + '$'
+        return True if (re.match(callRegex, self.get()) or re.match(staticCallRegex, self.get())) else False
